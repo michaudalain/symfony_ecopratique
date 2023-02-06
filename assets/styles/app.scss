@@ -1,0 +1,92 @@
+// $primary: #228B22;
+
+@import "~bootstrap/scss/bootstrap";
+
+$theme-color: #228B22;
+
+body {
+    background-color: white;
+}
+
+.bg-theme {
+    background-color: $theme-color;
+    color: white;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: white;
+}
+
+.nav-link-custom {
+    color: white;
+}
+
+.nav-link-custom:hover {
+    color: greenyellow;
+}
+
+.navbar-brand:hover {
+    color: greenyellow;
+}
+
+.btn-primary-custom {
+    background: #228B22;
+    border: #228B22;
+    border-radius: 0;
+}
+
+.btn-primary-custom:hover {
+    background: #409240;
+}
+
+.btn-primary-custom:active{
+    background: #409240;
+}
+
+th {
+    background: #006400;
+    height: 32px;
+}
+  
+thead th:nth-child(1) {
+    width: 5%;
+    text-align: center;
+}
+thead th:nth-child(2) {
+    width: 20%;
+}
+thead th:nth-child(3) {
+    width: 55%;
+}
+thead th:nth-child(4) {
+    width: 10%;
+    text-align: center;
+}
+thead th:nth-child(5) {
+    width: 10%;
+    text-align: center;
+}
+
+tr td:nth-child(1) {
+    text-align: center;
+}
+
+tr td:nth-child(4) {
+    text-align: center;
+}
+tr td:nth-child(5) {
+    text-align: center;
+}
+
+td a {
+    text-decoration: none;
+    color: #333;
+}
+
+.form-signin {
+    display: flex;
+    flex-direction: column;
+    max-width: 330px;
+    padding: 15px;
+}

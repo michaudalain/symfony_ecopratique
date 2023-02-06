@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <script src="https://kit.fontawesome.com/16875f3306.js" crossorigin="anonymous"></script>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -14,6 +14,49 @@
         {% endblock %}
     </head>
     <body>
+        <header class="bg-theme">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary bg-theme navbar-custom">
+                    <div class="container-fluid">
+                      <a class="navbar-brand" href="{{ path('accueil') }}">Ecopratique</a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link nav-link-custom" aria-current="page" href="{{ path('accueil') }}">Accueil</a>
+                          </li>
+                          {% if app.user %}
+                            <li class="nav-item">
+                              <a class="nav-link nav-link-custom" href="{{ path('articles_index') }}">Liste des Articles</a>
+                            </li>
+                          {% endif %}
+                          {% if not app.user %}
+                            <li class="nav-item">
+                              <a class="nav-link nav-link-custom" href="{{ path('app_register') }}">Inscription</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link nav-link-custom" href="{{ path('app_login') }}">Connexion</a>
+                            </li>
+                          {% endif %}
+                          
+                        </ul>
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                          {% if app.user %}
+                            <li class="nav-item">
+                              <span class="nav-link nav-link-custom">Bienvenue {{ app.user.userIdentifier }}</span>
+                            </li>
+                            <li class="nav-item">
+                              <a href="{{ path('app_logout') }}" class="nav-link nav-link-custom">Deconnexion</a>
+                            </li>
+                          {% endif %}
+                        </ul>
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+        </header>
         {% block body %}{% endblock %}
     </body>
 </html>

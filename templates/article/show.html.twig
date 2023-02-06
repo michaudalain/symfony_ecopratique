@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail Article{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Détail de l'Article</h1>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ article.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Titre</th>
+                            <td>{{ article.titre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ article.description }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date de publication</th>
+                            <td>{{ article.dateArticle ? article.dateArticle|date('d-m-Y') : '' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="mb-3">
+            <a href="{{ path('articles_index') }}" title="Retour à la liste">Retour à la liste</a>
+            <a href="{{ path('articles_edit', {'id': article.id}) }}" title="Modifier">Modifier l'article</a>
+        </div>
+    
+        {{ include('article/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

@@ -25,10 +25,13 @@ class ArticleController extends AbstractController
     public function new(Request $request, ArticleRepository $articleRepository): Response
     {
         $article = new Article();
+       
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Associe l'article à l'utilisateur avant l'enregistrement
+            $article->setUser($this->getUser());
             $articleRepository->save($article, true);
 
             return $this->redirectToRoute('articles_index', [], Response::HTTP_SEE_OTHER);
